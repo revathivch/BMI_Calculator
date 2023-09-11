@@ -22,6 +22,7 @@ class _InputPageState extends State<InputPage> {
 
   Gender? selectedGender;
   int? height = 180;
+  int? weight = 60;
 
   @override
   Widget build(BuildContext context) {
@@ -112,24 +113,68 @@ class _InputPageState extends State<InputPage> {
                   onPress: () {  },
               )
               ),
-          // Expanded(
-          //     child: Row(
-          //       children: [
-          //         Expanded(
-          //           child:  ReusableCard(
-          //               colour: kActiveCardColor,
-          //               cardChild: IconContent(),
-          //           ),
-          //         ),
-          //         Expanded(
-          //           child: ReusableCard(
-          //               colour: kActiveCardColor,
-          //               cardChild: IconContent(),
-          //           ),
-          //         ),
-          //       ],
-          //     )
-          // ),
+          Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child:  ReusableCard(
+                        colour: kActiveCardColor,
+                        cardChild: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            const Text(
+                              'WEIGHT',
+                              style: kLabelTextStyle,
+                            ),
+                            Text(
+                              weight.toString(),
+                              style: kNumberTextStyle,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                FloatingActionButton(
+                                  backgroundColor: Color(0xFF4C4F5E),
+                                  child: const Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  ),
+                                  onPressed: (){
+                                    setState(() {
+                                      weight = (weight! + 1)!;
+                                    });
+                                  },
+                                ),
+                                const SizedBox(
+                                  width: 10.0,
+                                ),
+                                FloatingActionButton(
+                                  backgroundColor: Color(0xFF4C4F5E),
+                                  child: const Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  ),
+                                  onPressed: (){
+                                    setState(() {
+                                      weight = (weight! - 1)!;
+                                    });
+                                  },
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                    ),
+                  ),
+                  // Expanded(
+                  //   child: ReusableCard(
+                  //       colour: kActiveCardColor,
+                  //       cardChild: IconContent(),
+                  //   ),
+                  // ),
+                ],
+              )
+          ),
           Container(
             color: kBottomContainerColor,
             margin: EdgeInsets.only(top: 10.0),
